@@ -144,8 +144,39 @@
 
     <script>
         let data = [
-            
-            ["这是一个基础开始学习法语", "旨在促进口语交流", "点下一句按钮。可看此网页的使用说明"],
+["8 - Les loisirs", "8 - 休闲活动", "[le lwaziʁ]"],
+["Faire du sport", "做运动", "[fɛʁ dy spɔʁ]"],
+["courir", "跑步", "[kuʁiʁ]"],
+["danser", "跳舞", "[dɑ̃se]"],
+["faire du football", "踢足球", "[fɛʁ dy futbol]"],
+["faire du rugby", "打橄榄球", "[fɛʁ dy ʁœɡbi]"],
+["faire du roller", "溜旱冰", "[fɛʁ dy ʁɔlɛʁ]"],
+["faire du vélo", "骑自行车", "[fɛʁ dy velo]"],
+["sauter", "跳跃", "[sote]"],
+["faire du tennis", "打网球", "[fɛʁ dy tɛnis]"],
+["faire du judo, de la lutte", "练柔道，摔跤", "[fɛʁ dy ʒydo də la lyt]"],
+["nager", "游泳", "[naʒe]"],
+["faire de la gymnastique", "做体操", "[fɛʁ də la ʒimnastik]"],
+["patiner", "滑冰", "[patine]"],
+["aller à la patinoire", "去溜冰场", "[ale a la patinwaʁ]"],
+["Jouer et sortir", "玩耍和外出", "[ʒwe e sɔʁtiʁ]"],
+["jouer au cerf-volant", "放风筝", "[ʒwe o sɛʁvɔlɑ̃]"],
+["Regarder la télé (télévision)", "看电视", "[ʁəɡaʁde la tele]"],
+["jouer à des jeux de société", "玩桌游", "[ʒwe a de ʒø də sɔsjete]"],
+["jouer aux cartes", "打牌", "[ʒwe o kaʁt]"],
+["jouer à cache-cache", "玩捉迷藏", "[ʒwe a kaʃkaʃ]"],
+["lire des BD", "看漫画", "[liʁ de be de]"],
+["peindre", "画画", "[pɛ̃dʁ]"],
+["dessiner", "绘画", "[desine]"],
+["écouter de la musique", "听音乐", "[ekute də la myzik]"],
+["jouer sur l'ordinateur", "玩电脑", "[ʒwe syʁ lɔʁdinateur]"],
+["discuter avec un(e) ami(e)", "和朋友聊天", "[diskyte avɛk œ̃(yn) ami(e)]"],
+["aller au cinéma", "去看电影", "[ale o sinema]"],
+["pique-niquer", "野餐", "[piknike]"],
+["s'occuper d'un animal", "照顾动物", "[sɔkype dœ̃n‿animal]"],
+["aller au musée", "去博物馆", "[ale o myze]"],
+["Quand j'ai du temps libre, j'aime…", "当我有空闲时间时，我喜欢…", "[kɑ̃ ʒe dy tɑ̃ libʁ ʒɛm]"], 
+ ["这是一个基础开始学习法语", "旨在促进口语交流", "点下一句按钮。可看此网页的使用说明"],
             ["此网页分三个部分", "菜单区。显示区。数据区", "包括五个触发按钮"],
             ["五个触发按钮是", "选择,上一句,下一句", "正常读音,慢读音"],
             ["选择按钮的作用", "可以实现随意从哪一个句子开始学习", "选择哪个句子,就开始从哪学习"],
@@ -175,18 +206,19 @@
        let stream;
 
 // 在页面加载时请求麦克风权限并保持流开启
-//navigator.mediaDevices.getUserMedia({ audio: true })
-//    .then(s => {
-//        stream = s;
-//        console.log("Microphone is now ready to use");
+navigator.mediaDevices.getUserMedia({ audio: true })
+    .then(s => {
+        stream = s;
+        console.log("Microphone is now ready to use");
         // 保持音频轨道开启
- //       stream.getAudioTracks().forEach(track => {
-//            track.enabled = true;
-//        });
-//    })
-//    .catch(error => {
-//        console.error("Error accessing microphone:", error);
-//    });
+        stream.getAudioTracks().forEach(track => {
+            track.enabled = true;
+        });
+    })
+    .catch(error => {
+        console.error("Error accessing microphone:", error);
+    });
+
 
 
         function updateDisplay() {
@@ -240,6 +272,7 @@
             let utterance = new SpeechSynthesisUtterance(data[currentIndex][0]);
             utterance.lang = 'fr-FR';
             utterance.rate = 0.5;
+
             synth.speak(utterance);
         });
 

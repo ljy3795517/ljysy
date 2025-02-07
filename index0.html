@@ -175,18 +175,18 @@
        let stream;
 
 // 在页面加载时请求麦克风权限并保持流开启
-//navigator.mediaDevices.getUserMedia({ audio: true })
-//    .then(s => {
-//        stream = s;
-//        console.log("Microphone is now ready to use");
+navigator.mediaDevices.getUserMedia({ audio: true })
+    .then(s => {
+        stream = s;
+        console.log("Microphone is now ready to use");
         // 保持音频轨道开启
- //       stream.getAudioTracks().forEach(track => {
-//            track.enabled = true;
-//        });
-//    })
-//    .catch(error => {
-//        console.error("Error accessing microphone:", error);
-//    });
+        stream.getAudioTracks().forEach(track => {
+            track.enabled = true;
+        });
+    })
+    .catch(error => {
+        console.error("Error accessing microphone:", error);
+    });
 
 
         function updateDisplay() {
